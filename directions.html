@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <title>OceanView | Location</title>
+    <meta charset='utf-8'>
+    <meta name='description' content='Web Design Project'>
+    <meta name='keywords' content='OceanView, b&b, bed and breakfast, kerry, ireland'>
+    <meta name='author' content='Shannen Dowling'>
+    <meta name='robots' content='all'>
+    <meta name='viewport' content='width=device-width'>
+    <!-- <meta http-equiv='X-UA-Compatible' content='IE=edge'> -->
+    <link rel="stylesheet" href="stylesheet1.css" type="text/css">
+    <link rel="stylesheet" href="responsive.css" type="text/css">
+    <link href="Images/favicon.ico" rel="icon"/>
+    <link href="Images/favicon.ico" rel="shortcuticon"/>
+    
+    <style type="text/css">
+    
+      .main{height:90%;}
+      
+    </style>
+  </head>
+  <body>
+  
+  <a id="top"></a>
+  
+    <div class="header">
+      
+        <div class="nav">
+          <a href="index.html">Home | </a>
+          <a href="information.html">Information | </a>
+          <a href="bookings.html">Book Now | </a>
+          <a href="directions.html">Get Directions | </a>
+          <a href="contact.html">Contact Us</a>
+        </div>
+      
+      <h1>OceanView B&B</h1>
+     </div>
+    
+    <div class="gallery">
+      <h3>Gallery</h3>
+      
+      <img src="Images/Image1.jpg" width="154" height="116" alt="Ocean"> <!--Image from publicdomainpictures.net-->
+    </div>
+ 
+    <div class="image" id="left">
+      <img src="Images/Outside.jpg" width="1000" height="300" alt="OceanView B&B"> <!--Image from iha.com-->
+    </div>
+    
+    <div class="gallery2">
+      <img src="Images/Outside2.jpg" width="154" height="116" alt="OceanView B&B"> <!--Image from iha.com-->
+    </div>
+    
+    <div class="gallery2">
+      <img src="Images/Image3.jpg" width="154" height="116" alt="OceanView B&B"> <!--Image from pixabay.com-->
+    </div>
+    
+  <div class="mainContent main">
+    
+    <h2>Get Directions</h2>
+    
+  </div>
+  
+  <div id="map"></div>   
+<script> 
+  function getLocation() {
+    
+    var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 52.350612, lng: -9.825122},  
+          zoom: 10
+        });
+    
+    var infoWindow = new google.maps.InfoWindow({map: map});
+
+      if (navigator.geolocation) 
+      {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+
+            infoWindow.setPosition(pos);                            /*Some code from google api tutorial,  */
+            infoWindow.setContent("Location found.");               /* reworked & changed to suit my project*/
+            map.setCenter(pos);
+          }, 
+          
+          function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+      }
+         
+      else
+      { 
+          handleLocationError(false, infoWindow, map.getCenter());
+      }
+  }
+
+  function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              "The Geolocation service failed." :
+                              "Your browser doesn't support geolocation.");
+  }
+</script> 
+      
+    <script id="map" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgN-I73q6JG6xZiL7IXipPiHvLlIPtd4U&callback=getLocation">
+      </script>
+  
+  
+    <div class="gallery2">
+      <img src="Images/rooms1.jpg" width="154" height="116" alt="OceanView B&B"> <!--Image from iha.com-->
+    </div>
+    
+    <div class="gallery2">
+      <img src="Images/rooms2.jpg" width="154" height="116" alt="OceanView B&B"> <!--Image from iha.com-->
+    </div>
+    
+    <div class="gallery2">
+      <img src="Images/bathrooms1.jpg" width="154" height="116" alt="OceanView B&B"> <!--Image from iha.com-->
+    </div>
+
+
+    <div class="footer">
+      <a href ="#top" class="textbold link">Back to top </a>
+      
+      <p>Copyright &#169; 2016 OceanView B&B. All rights reserved. | Place of 
+      Registration: Ireland</p>
+        
+        <a href="index.html" class="link">Home</a>
+         | <a href="information.html" class="link">Information</a>
+         | <a href="bookings.html" class="link">Book Now</a> 
+         | <a href="directions.html" class="link">Get Directions</a> 
+         | <a href="contact.html" class="link">Contact Us</a>
+         | <a href ="sitemap.html" class="link">Sitemap</a>
+    </div>
+  </body>
+</html>
